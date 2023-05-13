@@ -40,9 +40,9 @@ from sklearn.model_selection import train_test_split as tts
 
 #parameters that can be edited
 def setParam(P_threadcount = 24, P_split = 1000, P_sparql_endpoints = 4,  P_prefix = 'http://dbpedia.org/ontology/' ,  P_relation = 'owl:disjointWith', P_path = 'fragments/',
-             P_corese_path = os.path.normpath(r"C:\Users\ballo\OneDrive - Université Nice Sophia Antipolis\corese\corese-server"), 
-             P_rdfminer_path = os.path.normpath(r"C:\Users\ballo\OneDrive - Université Nice Sophia Antipolis\corese\RDFMining"),
-             P_command_line = 'start /w cmd /k java -jar -Dfile.encoding=UTF8 -Xmx20G corese-server-4.3.0.jar -e -lp -debug -pp profile.ttl', P_dataset = 'dbpedia_updated_disjoint.owl',
+             P_corese_path = os.path.normpath(r"C:\corese\corese-server"), 
+             P_rdfminer_path = os.path.normpath(r"C:\corese\RDFMining"),
+             P_command_line = 'start /w cmd /k java -jar -Dfile.encoding=UTF8 -Xmx20G corese-server-4.3.0.jar -e -lp -debug -pp profile.ttl', P_dataset = 'dbpediaHPC.owl',
              P_wds_Corese = 'http://localhost:8080/sparql', P_label_type = 'c', P_list_of_axioms = None, P_score = None,  P_dont_score = True, P_set_axiom_number = 0):
     global threadcount    #number of process for multiprocessing avoid using logical cores
     global split          # divide the table you are working on into tasks, the more processors the more you can divide
@@ -918,10 +918,10 @@ if __name__ == '__main__':
     pd.set_option('display.precision', 5)
     pd.set_option('display.max_rows', 99999999999)
     #end version, every parameter that can be changed should be here
-    setParam(P_threadcount = 6, P_split =16,  P_prefix = '' , P_sparql_endpoints =16, P_dataset = 'dbpedia_updated_disjoint_addedconcepts.owl',
+    setParam(P_threadcount = 6, P_split =16,  P_prefix = '' , P_sparql_endpoints =16, P_dataset = 'dbpediaHPC.owl',#change P_dataset to the path of the owl ontology you want to use
              P_path = 'fragments/',
              P_corese_path = os.path.normpath("C:\corese-server"),
-             P_rdfminer_path = os.path.normpath(r"C:\Users\ballo\OneDrive - Université Nice Sophia Antipolis\corese\RDFMining"),
+             P_rdfminer_path = os.path.normpath(r"C:\corese\RDFMining"),
              P_command_line = 'start /w cmd /k java -jar -Dfile.encoding=UTF8 -Xmx24G corese-server-4.3.0.jar -e -lp -pp profile.ttl', 
              P_wds_Corese = 'http://localhost:8080/sparql', 
              P_relation = 'owl:disjointWith',
